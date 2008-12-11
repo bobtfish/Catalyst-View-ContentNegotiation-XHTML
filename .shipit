@@ -1,0 +1,9 @@
+# auto-generated shipit config file.
+steps = FindVersion, ChangeVersion, CheckChangeLog, DistTest, Commit, Tag, MakeDist
+
+svk.tagpattern =  //mirror/Catalyst-View-TT-XHTML/tags/%v
+
+# svn.tagpattern = MyProj-%v
+# svn.tagpattern = http://code.example.com/svn/tags/MyProj-%v
+
+CheckChangeLog.files = Changes
