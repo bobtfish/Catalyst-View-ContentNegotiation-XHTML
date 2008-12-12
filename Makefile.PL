@@ -9,7 +9,6 @@ requires 'Catalyst::View::TT';
 build_requires 'Catalyst::Action::RenderView';
 build_requires 'Test::WWW::Mechanize::Catalyst';
 build_requires 'Test::More';
-build_requires 'ok';
 
 resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-View-TT-XHTML';
 

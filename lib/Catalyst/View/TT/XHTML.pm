@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base qw/Catalyst::View::TT/;
 
-our $VERSION = '0.001000';
+our $VERSION = '1.000';
 
 sub process {
     my $self = shift;
