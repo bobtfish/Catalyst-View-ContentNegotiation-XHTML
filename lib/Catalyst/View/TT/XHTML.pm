@@ -71,6 +71,14 @@ SYNOPSIS).
 
 Tomas Doran C<< <bobtfish@bobtfish.net> >>
 
+=head1 CONTRIBUTORS
+
+=over
+
+=item David Dorward - test patches
+
+=back
+
 =head1 COPYRIGHT
 
 This module itself is copyright (c) 2008 Tomas Doran and is licensed under the same terms as Perl itself.

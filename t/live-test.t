@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 22;
 
 # setup library path
 use FindBin qw($Bin);
@@ -42,3 +42,27 @@ $mech->get_ok('http://localhost/nothtml', 'get nothtml page');
 $mech->content_like(qr/not html/i, 'see if it has our text');
 is $mech->response->headers->{'content-type'}, 'application/json',
   'application/json is unmolested';
+
+# 14-16
+$mech->add_header( Accept => 'text/html, application/xhtml+xml');
+$mech->get_ok('http://localhost/', 'get main page');
+$mech->content_like(qr/it works/i, 'see if it has our text');
+is $mech->response->headers->{'content-type'}, 'application/xhtml+xml; charset=utf-8',
+  'Accept xhtml AND html gives content type application/xhtml+xml';
+
+
+# 17-19
+$mech->add_header( Accept => 'text/html, application/xhtml+xml;q=0');
+$mech->get_ok('http://localhost/', 'get main page');
+$mech->content_like(qr/it works/i, 'see if it has our text');
+is $mech->response->headers->{'content-type'}, 'text/html; charset=utf-8',
+  'Accept header of application/xhtml+xml with q value of 0 and text/html = text/html';
+
+# 20-22
+$mech->add_header( Accept => 'text/html;q=0');
+$mech->get_ok('http://localhost/', 'get main page');
+$mech->content_like(qr/it works/i, 'see if it has our text');
+is $mech->response->headers->{'content-type'}, 'application/xhtml+xml; charset=utf-8',
+  'Accept html with a q value of 0 gives content type application/xhtml+xml';
+
+
