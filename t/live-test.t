@@ -59,7 +59,7 @@ is $mech->response->headers->{'content-type'}, 'text/html; charset=utf-8',
   'Accept header of application/xhtml+xml with q value of 0 and text/html = text/html';
 
 # 20-22
-$mech->add_header( Accept => 'text/html;q=0');
+$mech->add_header( Accept => 'text/html;q=0, application/xhtml+xml');
 $mech->get_ok('http://localhost/', 'get main page');
 $mech->content_like(qr/it works/i, 'see if it has our text');
 is $mech->response->headers->{'content-type'}, 'application/xhtml+xml; charset=utf-8',

@@ -1,19 +1,28 @@
 package Catalyst::View::TT::XHTML;
 use strict;
 use warnings;
+use HTTP::Negotiate qw(choose);
 use base qw/Catalyst::View::TT/;
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
+
+our $variants = [
+    [qw| xhtml 1.000 application/xhtml+xml |],
+    [qw| html  0.001 text/html             |],
+];
 
 sub process {
     my $self = shift;
     my ($c) = @_;
-    $self->next::method(@_);
-    my $accept = $c->request->header('Accept');
-    if ( $accept && $accept =~ m|application/xhtml\+xml|) {
-      $c->response->headers->{'content-type'} =~ s|text/html|application/xhtml+xml|;
+    my $return = $self->next::method(@_);
+   
+    if ($c->request->header('Accept') && $c->response->headers->{'content-type'} =~ m|text/html|) {
+        my $var = choose($variants, $c->request->headers);
+        if ($var eq 'xhtml') {
+            $c->response->headers->{'content-type'} =~ s|text/html|application/xhtml+xml|;
+        }
     }
-    return 1;
+    return $return;
 }
 
 1;

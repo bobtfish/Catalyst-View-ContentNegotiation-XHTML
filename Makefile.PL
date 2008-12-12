@@ -5,6 +5,7 @@ all_from 'lib/Catalyst/View/TT/XHTML.pm';
 
 requires 'Catalyst::Runtime';
 requires 'Catalyst::View::TT';
+requires 'HTTP::Negotiate';
 
 build_requires 'Catalyst::Action::RenderView';
 build_requires 'Test::WWW::Mechanize::Catalyst';

@@ -1,91 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Catalyst::View::TT::XHTML - A sub-class of the standard TT view which
-serves application/xhtml+xml content if the browser accepts it.</title>
-<link rev="made" href="mailto:root@b45.apple.com" />
-</head>
+NAME
+    Catalyst::View::TT::XHTML - A sub-class of the standard TT view which
+    serves application/xhtml+xml content if the browser accepts it.
 
-<body style="background-color: white">
-
-<p><a name="__index__"></a></p>
-<!-- INDEX BEGIN -->
-
-<ul>
-
-	<li><a href="#name">NAME</a></li>
-	<li><a href="#synopsis">SYNOPSIS</a></li>
-	<li><a href="#methods">METHODS</a></li>
-	<ul>
-
-		<li><a href="#process">process</a></li>
-	</ul>
-
-	<li><a href="#bugs">BUGS</a></li>
-	<li><a href="#author">AUTHOR</a></li>
-	<li><a href="#copyright">COPYRIGHT</a></li>
-</ul>
-<!-- INDEX END -->
-
-<hr />
-<p>
-</p>
-<h1><a name="name">NAME</a></h1>
-<p>Catalyst::View::TT::XHTML - A sub-class of the standard TT view which
-serves application/xhtml+xml content if the browser accepts it.</p>
-<p>
-</p>
-<hr />
-<h1><a name="synopsis">SYNOPSIS</a></h1>
-<pre>
-    package MyApp::View::XHTML;
-    use strict;
-    use warnings;
-    use base qw/Catalyst::View::TT::XHTML MyApp::View::TT/;
+SYNOPSIS
+        package MyApp::View::XHTML;
+        use strict;
+        use warnings;
+        use base qw/Catalyst::View::TT::XHTML MyApp::View::TT/;
     
-    1;
+        1;
     
-=head1 DESCRIPTION</pre>
-<p>This is a very simple sub-class of <a href="/Catalyst/View/TT.html">the Catalyst::View::TT manpage</a>, which sets
-the response <code>Content-Type</code> to be <code>application/xhtml+xml</code> if the
-user's browser sends an <code>Accept</code> header indicating that it is willing
-to process that MIME type.</p>
-<p>Changing the <code>Content-Type</code> causes browsers to interpret the page as
-strict XHTML, meaning that the markup must be well formed.</p>
-<p>This is useful when you're developing your application, as you know that
-all pages you view are rendered strictly, so any markup errors will show
-up at once.</p>
-<p>
-</p>
-<hr />
-<h1><a name="methods">METHODS</a></h1>
-<p>
-</p>
-<h2><a name="process">process</a></h2>
-<p>Overrides the standard process method, delegating to <a href="/Catalyst/View/TT.html">the Catalyst::View::TT manpage</a>
-to render the template, and then changing the response <code>Content-Type</code> if
-appropriate (from the requests <code>Accept</code> header).</p>
-<p>
-</p>
-<hr />
-<h1><a name="bugs">BUGS</a></h1>
-<p>There should be a more elegant way to inherit the config of your normal 
-TT view.</p>
-<p>Configuration (as loaded by <a href="/Catalyst/Plugin/ConfigLoader.html">the Catalyst::Plugin::ConfigLoader manpage</a>) for the TT 
-view is not used.</p>
-<p>No helper to generate the view file needed (just copy the code in the 
-SYNOPSIS).</p>
-<p>
-</p>
-<hr />
-<h1><a name="author">AUTHOR</a></h1>
-<p>Tomas Doran <code>&lt;bobtfish@bobtfish.net&gt;</code></p>
-<p>
-</p>
-<hr />
-<h1><a name="copyright">COPYRIGHT</a></h1>
-<p>This module itself is copyright (c) 2008 Tomas Doran and is licensed under the same terms as Perl itself.</p>
+DESCRIPTION
+    This is a very simple sub-class of Catalyst::View::TT, which sets the
+    response "Content-Type" to be "application/xhtml+xml" if the user's
+    browser sends an "Accept" header indicating that it is willing to
+    process that MIME type.
 
-</body>
+    Changing the "Content-Type" causes browsers to interpret the page as
+    strict XHTML, meaning that the markup must be well formed.
 
-</html>
+    This is useful when you're developing your application, as you know that
+    all pages you view are rendered strictly, so any markup errors will show
+    up at once.
+
+METHODS
+  process
+    Overrides the standard process method, delegating to Catalyst::View::TT
+    to render the template, and then changing the response "Content-Type" if
+    appropriate (from the requests "Accept" header).
+
+BUGS
+    There should be a more elegant way to inherit the config of your normal
+    TT view.
+
+    Configuration (as loaded by Catalyst::Plugin::ConfigLoader) for the TT
+    view is not used.
+
+    No helper to generate the view file needed (just copy the code in the
+    SYNOPSIS).
+
+AUTHOR
+    Tomas Doran "<bobtfish@bobtfish.net>"
+
+CONTRIBUTORS
+    David Dorward - test patches
+
+COPYRIGHT
+    This module itself is copyright (c) 2008 Tomas Doran and is licensed
+    under the same terms as Perl itself.
+
