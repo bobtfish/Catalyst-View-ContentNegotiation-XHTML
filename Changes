@@ -1,7 +1,10 @@
+1.002 2008-12-13
+  - Add 'use Class::C3' so that the module works on the currently 
+    released Catalyst version.
 1.001 2008-12-12
   - Add tests for other Accept header cases where the current code
-    will get it wrong (David Dorward)
-  - Fix all of these tests (t0m)
+    will get it wrong. (David Dorward)
+  - Fix all of these tests. (t0m)
 1.000 2008-12-12
   - First working version of the module extracted from the quick hack
     I have in every Catalyst application I've ever written.

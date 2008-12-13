@@ -2,9 +2,10 @@ package Catalyst::View::TT::XHTML;
 use strict;
 use warnings;
 use HTTP::Negotiate qw(choose);
+use Class::C3;
 use base qw/Catalyst::View::TT/;
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 our $variants = [
     [qw| xhtml 1.000 application/xhtml+xml |],

@@ -6,4 +6,4 @@ MANIFEST.SKIP~
 cover_db
 Makefile$
 Makefile.old$
-.shipt
+.shipit
