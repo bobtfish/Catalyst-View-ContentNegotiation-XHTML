@@ -6,7 +6,7 @@ all_from 'lib/Catalyst/View/TT/XHTML.pm';
 requires 'Catalyst::Runtime';
 requires 'Catalyst::View::TT';
 requires 'HTTP::Negotiate';
-requires 'Class::C3';
+requires 'MRO::Compat';
 
 build_requires 'Catalyst::Action::RenderView';
 build_requires 'Test::WWW::Mechanize::Catalyst';
