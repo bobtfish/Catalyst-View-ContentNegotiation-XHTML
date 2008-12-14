@@ -1,3 +1,6 @@
+1.004
+  - Nick the OSX fragment out of the Catalyst::Runtime Makefile.PL to
+    beat my Mac into generating a correct dist.
 1.003
   - Fixes an tests to be fully Internet Explorer compatible (David Dorward)
   - Change to MRO::Compat for perl 5.10 (t0m)

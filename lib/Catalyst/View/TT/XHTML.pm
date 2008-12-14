@@ -5,7 +5,7 @@ use HTTP::Negotiate qw(choose);
 use MRO::Compat;
 use base qw/Catalyst::View::TT/;
 
-our $VERSION = '1.003';
+our $VERSION = '1.004';
 
 our $variants = [
     [qw| xhtml 1.000 application/xhtml+xml |],
