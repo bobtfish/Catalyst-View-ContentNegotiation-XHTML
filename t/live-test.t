@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 28;
 
 # setup library path
 use FindBin qw($Bin);
@@ -20,7 +20,7 @@ $mech->get_ok('http://localhost/', 'get main page');
 $mech->content_like(qr/it works/i, 'see if it has our text');
 is $mech->response->headers->{'content-type'}, 'text/html; charset=utf-8',
   'No Accept header = text/html';
-  
+
 $mech->add_header( Accept => 'text/html' );
 
 # 5-7
@@ -65,4 +65,17 @@ $mech->content_like(qr/it works/i, 'see if it has our text');
 is $mech->response->headers->{'content-type'}, 'application/xhtml+xml; charset=utf-8',
   'Accept html with a q value of 0 gives content type application/xhtml+xml';
 
+# 23-25
+$mech->add_header( Accept => '*/*');
+$mech->get_ok('http://localhost/', 'get main page');
+$mech->content_like(qr/it works/i, 'see if it has our text');
+is $mech->response->headers->{'content-type'}, 'text/html; charset=utf-8',
+  'Accept */* content type text/html';
 
+# 26-28
+$mech->add_header( Accept => '*/*, application/xhtml+xml');
+$mech->get_ok('http://localhost/', 'get main page');
+$mech->content_like(qr/it works/i, 'see if it has our text');
+is $mech->response->headers->{'content-type'}, 'application/xhtml+xml; charset=utf-8',
+  'Accept */* and application/xhtml+xml gives content type application/xhtml+xml';
+ 

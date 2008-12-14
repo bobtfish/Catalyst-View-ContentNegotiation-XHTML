@@ -1,5 +1,6 @@
 1.003
-  - Change to MRO::Compat for perl 5.10.
+  - Fixes an tests to be fully Internet Explorer compatible (David Dorward)
+  - Change to MRO::Compat for perl 5.10 (t0m)
 1.002 2008-12-13
   - Add 'use Class::C3' so that the module works on the currently 
     released Catalyst version.
