@@ -55,9 +55,9 @@ __END__
 
 =head1 NAME
 
-Catalyst::View::ContentNegotiation::XHTML - A Moose Role to apply to
-Catalyst views adjusts the response Content-Type header to 
-application/xhtml+xml content if the browser accepts it.
+Catalyst::View::ContentNegotiation::XHTML - Adjusts the 
+response Content-Type header to application/xhtml+xml 
+if the browser accepts it.
 
 =head1 SYNOPSIS
 
@@ -73,17 +73,23 @@ application/xhtml+xml content if the browser accepts it.
 
 =head1 DESCRIPTION
 
-This is a very simple Role which uses a method modifier to run after the
-C<process> method, and sets the response C<Content-Type> to be 
+This is a simple Role which sets the response C<Content-Type> to be 
 C<application/xhtml+xml> if the users browser sends an C<Accept> header 
 indicating that it is willing to process that MIME type.
 
-Changing the C<Content-Type> causes browsers to interpret the page as
-XML, meaning that the markup must be well formed.
+Changing the C<Content-Type> to C<application/xhtml+xml> causes 
+browsers to interpret the page as XML, meaning that your markup must 
+be well formed.
+
+=head1 CAVEATS
 
 This is useful when you're developing your application, as you know that
 all pages you view are parsed as XML, so any errors caused by your markup
 not being well-formed will show up at once.
+
+Whilst this module is has been tested against most popular browsers including
+Internet Explorer, it may cause unexpected results on browsers which do not
+properly support the C<application/xhtml+xml> MIME type.
 
 =head1 METHOD MODIFIERS
 
