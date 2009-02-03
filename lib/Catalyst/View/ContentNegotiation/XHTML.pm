@@ -126,8 +126,6 @@ Returns the default variant attribute contents.
 
 =head1 BUGS
 
-Will only work with Views which implement a process method.
-
 Should be split into a base ContentNegotiation role which is consumed by ContentNegotiation::XHTML.
 
 =head1 AUTHOR
