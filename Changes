@@ -1,6 +1,7 @@
 1.100
   - Refactor into a Moose Role for use with alternate views. (rafl)
   - Additional documentation (t0m)
+  - Clone request headers rather than changing them (t0m)
 1.004
   - Nick the OSX fragment out of the Catalyst::Runtime Makefile.PL to
     beat my Mac into generating a correct dist. (t0m)
