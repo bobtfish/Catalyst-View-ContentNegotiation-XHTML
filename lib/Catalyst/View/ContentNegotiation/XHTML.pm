@@ -28,10 +28,10 @@ sub _build_variants {
 
 after process => sub {
     my ($self, $c) = @_;
-    if ($c->request->header('Accept') && $c->response->headers->{'content-type'} =~ m|text/html|) {
-        $self->pragmatic_accept($c);
-        my $var = choose($self->variants, $c->request->headers);
-        if ($var eq 'xhtml') {
+    if ( my $accept = $self->pragmatic_accept($c) and $c->response->headers->{'content-type'} =~ m|text/html|) {
+        my $headers = $c->request->headers->clone;
+        $headers->header('Accept' => $accept);
+        if ( choose($self->variants, $headers) eq 'xhtml') {
             $c->response->headers->{'content-type'} =~ s|text/html|application/xhtml+xml|;
         }
     }
@@ -39,13 +39,14 @@ after process => sub {
 
 sub pragmatic_accept {
     my ($self, $c) = @_;
-    my $accept = $c->request->header('Accept');
+    my $accept = $c->request->header('Accept') or return;
     if ($accept =~ m|text/html|) {
         $accept =~ s!\*/\*\s*([,]+|$)!*/*;q=0.5$1!;
-    } else {
+    } 
+    else {
         $accept =~ s!\*/\*\s*([,]+|$)!text/html,*/*;q=0.5$1!;
     }
-    $c->request->header('Accept' => $accept);
+    return $accept;
 }
 
 1;
