@@ -10,6 +10,8 @@ use namespace::clean -except => 'meta';
 # Remember to bump $VERSION in View::TT::XHTML also.
 our $VERSION = '1.100';
 
+requires 'process';
+
 has variants => (
     is      => 'ro',
     isa     => ArrayRef[Tuple[Str, Num, Str]],
