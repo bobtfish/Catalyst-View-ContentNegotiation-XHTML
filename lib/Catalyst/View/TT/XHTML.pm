@@ -5,6 +5,7 @@ use HTTP::Negotiate qw(choose);
 use MRO::Compat;
 use base qw/Catalyst::View::TT/;
 
+# Remember to bump $VERSION in ContentNegotiation::XHTML also.
 our $VERSION = '1.004';
 
 our $variants = [
