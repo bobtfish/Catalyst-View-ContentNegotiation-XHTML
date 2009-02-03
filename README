@@ -1,49 +1,73 @@
 NAME
-    Catalyst::View::TT::XHTML - A sub-class of the standard TT view which
-    serves application/xhtml+xml content if the browser accepts it.
+    Catalyst::View::ContentNegotiation::XHTML - A Moose Role to apply to
+    Catalyst views adjusts the response Content-Type header to
+    application/xhtml+xml content if the browser accepts it.
 
 SYNOPSIS
-        package MyApp::View::XHTML;
-        use strict;
-        use warnings;
-        use base qw/Catalyst::View::TT::XHTML MyApp::View::TT/;
-    
+        package Catalyst::View::TT;
+
+        use Moose;
+        use namespace::clean -except => 'meta';
+
+        extends qw/Catalyst::View::TT/;
+        with qw/Catalyst::View::ContentNegotiation::XHTML/;
+
         1;
-    
+
 DESCRIPTION
-    This is a very simple sub-class of Catalyst::View::TT, which sets the
-    response "Content-Type" to be "application/xhtml+xml" if the user's
-    browser sends an "Accept" header indicating that it is willing to
-    process that MIME type.
+    This is a very simple Role which uses a method modifier to run after the
+    "process" method, and sets the response "Content-Type" to be
+    "application/xhtml+xml" if the users browser sends an "Accept" header
+    indicating that it is willing to process that MIME type.
 
     Changing the "Content-Type" causes browsers to interpret the page as
-    strict XHTML, meaning that the markup must be well formed.
+    XML, meaning that the markup must be well formed.
 
     This is useful when you're developing your application, as you know that
-    all pages you view are rendered strictly, so any markup errors will show
-    up at once.
+    all pages you view are parsed as XML, so any errors caused by your
+    markup not being well-formed will show up at once.
+
+METHOD MODIFIERS
+  after process
+    Changes the response "Content-Type" if appropriate (from the requests
+    "Accept" header).
 
 METHODS
-  process
-    Overrides the standard process method, delegating to Catalyst::View::TT
-    to render the template, and then changing the response "Content-Type" if
-    appropriate (from the requests "Accept" header).
+  pragmatic_accept
+    Some browsers (such as Internet Explorer) have a nasty way of sending
+    Accept */* and this claiming to support XHTML just as well as HTML.
+    Saving to a file on disk or opening with another application does count
+    as accepting, but it really should have a lower q value then text/html.
+    This sub takes a pragmatic approach and corrects this mistake by
+    modifying the Accept header before passing it to content negotiation.
+
+ATTRIBUTES
+  variants
+    Returns an array ref of 3 part arrays, comprising name, priority, output
+    mime-type, which is used for the content negotiation algorithm.
+
+PRIVATE METHODS
+  _build_variants
+    Returns the default variant attribute contents.
+
+SEE ALSO
+    Catalyst::View::TT::XHTML - Trivial Catalyst TT view using this role.
+    <http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html> - Content
+    negotiation RFC.
 
 BUGS
-    There should be a more elegant way to inherit the config of your normal
-    TT view.
+    Will only work with Views which implement a process method.
 
-    Configuration (as loaded by Catalyst::Plugin::ConfigLoader) for the TT
-    view is not used.
-
-    No helper to generate the view file needed (just copy the code in the
-    SYNOPSIS).
+    Should be split into a base ContentNegotiation role which is consumed by
+    ContentNegotiation::XHTML.
 
 AUTHOR
-    Tomas Doran "<bobtfish@bobtfish.net>"
+    Tomas Doran (t0m) "<bobtfish@bobtfish.net>"
 
 CONTRIBUTORS
-    David Dorward - test patches
+    David Dorward - test patches and */* pragmatism.
+    Florian Ragwitz (rafl) "<rafl@debian.org>" - Conversion into a Moose
+    Role
 
 COPYRIGHT
     This module itself is copyright (c) 2008 Tomas Doran and is licensed
