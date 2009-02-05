@@ -55,9 +55,8 @@ __END__
 
 =head1 NAME
 
-Catalyst::View::ContentNegotiation::XHTML - Adjusts the 
-response Content-Type header to application/xhtml+xml 
-if the browser accepts it.
+Catalyst::View::ContentNegotiation::XHTML - Adjusts the response Content-Type
+header to application/xhtml+xml if the browser accepts it.
 
 =head1 SYNOPSIS
 
@@ -73,19 +72,18 @@ if the browser accepts it.
 
 =head1 DESCRIPTION
 
-This is a simple Role which sets the response C<Content-Type> to be 
-C<application/xhtml+xml> if the users browser sends an C<Accept> header 
+This is a simple Role which sets the response C<Content-Type> to be
+C<application/xhtml+xml> if the users browser sends an C<Accept> header
 indicating that it is willing to process that MIME type.
 
-Changing the C<Content-Type> to C<application/xhtml+xml> causes 
-browsers to interpret the page as XML, meaning that your markup must 
-be well formed.
+Changing the C<Content-Type> to C<application/xhtml+xml> causes browsers to
+interpret the page as XML, meaning that your markup must be well formed.
 
 =head1 CAVEATS
 
-This is useful when you're developing your application, as you know that
-all pages you view are parsed as XML, so any errors caused by your markup
-not being well-formed will show up at once.
+This is useful when you're developing your application, as you know that all
+pages you view are parsed as XML, so any errors caused by your markup not
+being well-formed will show up at once.
 
 Whilst this module is has been tested against most popular browsers including
 Internet Explorer, it may cause unexpected results on browsers which do not
@@ -95,24 +93,25 @@ properly support the C<application/xhtml+xml> MIME type.
 
 =head2 after process
 
-Changes the response C<Content-Type> if appropriate (from the requests C<Accept> header).
+Changes the response C<Content-Type> if appropriate (from the requests
+C<Accept> header).
 
 =head1 METHODS
 
 =head2 pragmatic_accept
 
-Some browsers (such as Internet Explorer) have a nasty way of sending
-Accept */* and this claiming to support XHTML just as well as HTML.
-Saving to a file on disk or opening with another application does
-count as accepting, but it really should have a lower q value then
-text/html. This sub takes a pragmatic approach and corrects this mistake
-by modifying the Accept header before passing it to content negotiation.
+Some browsers (such as Internet Explorer) have a nasty way of sending Accept
+*/* and this claiming to support XHTML just as well as HTML. Saving to a file
+on disk or opening with another application does count as accepting, but it
+really should have a lower q value then text/html. This sub takes a pragmatic
+approach and corrects this mistake by modifying the Accept header before
+passing it to content negotiation.
 
 =head1 ATTRIBUTES
 
 =head2 variants
 
-Returns an array ref of 3 part arrays, comprising name, priority, output 
+Returns an array ref of 3 part arrays, comprising name, priority, output
 mime-type, which is used for the content negotiation algorithm.
 
 =head1 PRIVATE METHODS
@@ -127,30 +126,36 @@ Returns the default variant attribute contents.
 
 =item L<Catalyst::View::TT::XHTML> - Trivial Catalyst TT view using this role.
 
-=item L<http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html> - Content negotiation RFC.
+=item L<http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html> - Content
+negotiation RFC.
 
 =back
 
 =head1 BUGS
 
-Should be split into a base ContentNegotiation role which is consumed by ContentNegotiation::XHTML.
+Should be split into a base ContentNegotiation role which is consumed by
+ContentNegotiation::XHTML.
 
 =head1 AUTHOR
 
-Tomas Doran (t0m) C<< <bobtfish@bobtfish.net> >>
+Original author and maintainer - Tomas Doran (t0m) 
+C<< <bobtfish@bobtfish.net> >>
 
 =head1 CONTRIBUTORS
 
 =over
 
-=item David Dorward - test patches and */* pragmatism. 
+=item David Dorward - test patches and */* pragmatism to make it work for
+browsers which aren't firefox.
 
-=item Florian Ragwitz (rafl) C<< <rafl@debian.org> >> - Conversion into a Moose Role
+=item Florian Ragwitz (rafl) C<< <rafl@debian.org> >> - Conversion into a
+Moose Role, which is what the module should have been originally.
 
 =back
 
 =head1 COPYRIGHT
 
-This module itself is copyright (c) 2008 Tomas Doran and is licensed under the same terms as Perl itself.
+This module itself is copyright (c) 2008 Tomas Doran and is licensed under the
+same terms as Perl itself.
 
 =cut
