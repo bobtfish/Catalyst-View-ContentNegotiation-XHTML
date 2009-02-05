@@ -1,7 +1,6 @@
 NAME
-    Catalyst::View::ContentNegotiation::XHTML - A Moose Role to apply to
-    Catalyst views adjusts the response Content-Type header to
-    application/xhtml+xml content if the browser accepts it.
+    Catalyst::View::ContentNegotiation::XHTML - Adjusts the response
+    Content-Type header to application/xhtml+xml if the browser accepts it.
 
 SYNOPSIS
         package Catalyst::View::TT;
@@ -15,17 +14,22 @@ SYNOPSIS
         1;
 
 DESCRIPTION
-    This is a very simple Role which uses a method modifier to run after the
-    "process" method, and sets the response "Content-Type" to be
+    This is a simple Role which sets the response "Content-Type" to be
     "application/xhtml+xml" if the users browser sends an "Accept" header
     indicating that it is willing to process that MIME type.
 
-    Changing the "Content-Type" causes browsers to interpret the page as
-    XML, meaning that the markup must be well formed.
+    Changing the "Content-Type" to "application/xhtml+xml" causes browsers
+    to interpret the page as XML, meaning that your markup must be well
+    formed.
 
+CAVEATS
     This is useful when you're developing your application, as you know that
     all pages you view are parsed as XML, so any errors caused by your
     markup not being well-formed will show up at once.
+
+    Whilst this module is has been tested against most popular browsers
+    including Internet Explorer, it may cause unexpected results on browsers
+    which do not properly support the "application/xhtml+xml" MIME type.
 
 METHOD MODIFIERS
   after process
@@ -56,18 +60,18 @@ SEE ALSO
     negotiation RFC.
 
 BUGS
-    Will only work with Views which implement a process method.
-
     Should be split into a base ContentNegotiation role which is consumed by
     ContentNegotiation::XHTML.
 
 AUTHOR
-    Tomas Doran (t0m) "<bobtfish@bobtfish.net>"
+    Original author and maintainer - Tomas Doran (t0m)
+    "<bobtfish@bobtfish.net>"
 
 CONTRIBUTORS
-    David Dorward - test patches and */* pragmatism.
+    David Dorward - test patches and */* pragmatism to make it work for
+    browsers which aren't firefox.
     Florian Ragwitz (rafl) "<rafl@debian.org>" - Conversion into a Moose
-    Role
+    Role, which is what the module should have been originally.
 
 COPYRIGHT
     This module itself is copyright (c) 2008 Tomas Doran and is licensed
