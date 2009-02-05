@@ -21,3 +21,4 @@ Dorward
 rafl
 ContentNegotiation
 Ragwitz
+firefox
