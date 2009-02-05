@@ -47,8 +47,11 @@ being well-formed will show up at once.
 This module is a very simple demonstration of a consumer of the
 L<Catalyst::View::ContentNegotiation::XHTML> role.
 
-If your needs are not trivial, then it is recommended that you consume that
-role yourself.
+If your needs are not trivial, or you are not using TT, then using this view
+is B<discouraged and deprecated>. It is highly recommended that you consume
+the L<Catalyst::View::ContentNegotiation::XHTML> role yourself, rather than
+doing silly things with multiple inheritance to use this view in combination
+with another one.
 
 =head1 AUTHOR
 
