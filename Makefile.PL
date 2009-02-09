@@ -7,6 +7,8 @@ requires 'Catalyst::Runtime';
 requires 'Catalyst::View::TT';
 requires 'HTTP::Negotiate';
 requires 'MRO::Compat';
+requires 'MooseX::Types::Structured';
+requires 'MooseX::Types::Moose';
 
 test_requires 'Catalyst::Action::RenderView';
 test_requires 'Test::WWW::Mechanize::Catalyst';
