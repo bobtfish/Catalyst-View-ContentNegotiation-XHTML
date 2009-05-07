@@ -1,4 +1,4 @@
-use inc::Module::Install;
+use inc::Module::Install 0.87;
 
 name 'Catalyst-View-ContentNegotiation-XHTML';
 all_from 'lib/Catalyst/View/ContentNegotiation/XHTML.pm';
@@ -33,5 +33,5 @@ if (-e 'inc/.author') {
                                         ' echo "to avoid getting resource forks in your dist."; exit 255; fi' });
   }
 }
-
+auto_install;
 WriteAll();
