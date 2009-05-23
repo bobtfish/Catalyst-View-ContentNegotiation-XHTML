@@ -34,4 +34,6 @@ if (-e 'inc/.author') {
   }
 }
 auto_install;
+resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-View-ContentNegotiation-XHTML/1.000/trunk/';
+
 WriteAll();
