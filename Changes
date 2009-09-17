@@ -1,3 +1,5 @@
+1.102
+  - Add Vary header to prevent potential problems with downstream caches
 1.101
   - Fix dependencies in Makefile.PL, merge fail :/
 1.100
