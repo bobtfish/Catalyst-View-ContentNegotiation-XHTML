@@ -8,7 +8,7 @@ use HTTP::Negotiate qw/choose/;
 use namespace::clean -except => 'meta';
 
 # Remember to bump $VERSION in View::TT::XHTML also.
-our $VERSION = '1.101';
+our $VERSION = '1.102';
 
 requires 'process';
 
@@ -139,15 +139,13 @@ ContentNegotiation::XHTML.
 
 =head1 AUTHOR
 
-Original author and maintainer - Tomas Doran (t0m) 
-C<< <bobtfish@bobtfish.net> >>
+    Maintainer and contributor of various features - David Dorward (dorward) C<< <david@dorward.me.uk> >>
+
+    Original author and maintainer - Tomas Doran (t0m) C<< <bobtfish@bobtfish.net> >>
 
 =head1 CONTRIBUTORS
 
 =over
-
-=item David Dorward - test patches and */* pragmatism to make it work for
-browsers which aren't firefox.
 
 =item Florian Ragwitz (rafl) C<< <rafl@debian.org> >> - Conversion into a
 Moose Role, which is what the module should have been originally.
