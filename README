@@ -64,12 +64,12 @@ BUGS
     ContentNegotiation::XHTML.
 
 AUTHOR
-    Original author and maintainer - Tomas Doran (t0m)
-    "<bobtfish@bobtfish.net>"
+    Maintainer and contributor of various features - David Dorward "<david@dorward.me.uk>"
+
+    Original author - Tomas Doran (t0m) "<bobtfish@bobtfish.net>"
 
 CONTRIBUTORS
-    David Dorward - test patches and */* pragmatism to make it work for
-    browsers which aren't firefox.
+
     Florian Ragwitz (rafl) "<rafl@debian.org>" - Conversion into a Moose
     Role, which is what the module should have been originally.
 
