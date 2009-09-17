@@ -8,7 +8,7 @@ BEGIN { # You can have chain endpoints in your view if you smoked enough crack..
     with qw/Catalyst::View::ContentNegotiation::XHTML/;
 }
 
-our $VERSION = '1.100';
+our $VERSION = '1.102';
    
 1;
 
