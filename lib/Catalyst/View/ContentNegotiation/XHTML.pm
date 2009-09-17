@@ -35,6 +35,7 @@ after process => sub {
             $c->response->headers->{'content-type'} =~ s|text/html|application/xhtml+xml|;
         }
     }
+    $c->response->headers->push_header(Vary => 'Accept');
 };
 
 sub pragmatic_accept {
