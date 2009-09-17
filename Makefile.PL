@@ -1,4 +1,13 @@
-use inc::Module::Install 0.87;
+use inc::Module::Install 0.91;
+use strict;
+use warnings;
+
+BEGIN {
+    if ($Module::Install::AUTHOR) {
+        require Module::Install::AuthorRequires;
+        require Module::Install::AuthorTests;
+    }
+}
 
 name 'Catalyst-View-ContentNegotiation-XHTML';
 all_from 'lib/Catalyst/View/ContentNegotiation/XHTML.pm';
@@ -14,11 +23,9 @@ test_requires 'Catalyst::Action::RenderView';
 test_requires 'Test::WWW::Mechanize::Catalyst';
 test_requires 'Test::More';
 
-resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-View-TT-XHTML';
-
-if (-e 'inc/.author') {
-  build_requires 'Test::Pod' => 1.14;
-  build_requires 'Test::Pod::Coverage' => 1.04;
+if ($Module::Install::AUTHOR) {
+  author_requires 'Test::Pod' => 1.14;
+  author_requires 'Test::Pod::Coverage' => 1.04;
 
   if ($^O eq 'darwin') {
       my $osx_ver = `/usr/bin/sw_vers -productVersion`;
@@ -32,8 +39,10 @@ if (-e 'inc/.author') {
                                         qq{ echo "You must set the ENV variable $attr to true,"; }.
                                         ' echo "to avoid getting resource forks in your dist."; exit 255; fi' });
   }
+  author_tests 't/author';
 }
 auto_install;
-resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-View-ContentNegotiation-XHTML/1.000/trunk/';
+resources repository => 'git://git.shadowcat.co.uk/catagits/Catalyst-View-ContentNegotiation-XHTML.git';
 
 WriteAll();
+
