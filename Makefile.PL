@@ -26,7 +26,7 @@ test_requires 'Test::More';
 if ($Module::Install::AUTHOR) {
   author_requires 'Test::Pod' => 1.14;
   author_requires 'Test::Pod::Coverage' => 1.04;
-
+  author_requires 'Test::Spelling' => 0.11;
   if ($^O eq 'darwin') {
       my $osx_ver = `/usr/bin/sw_vers -productVersion`;
       chomp $osx_ver;
