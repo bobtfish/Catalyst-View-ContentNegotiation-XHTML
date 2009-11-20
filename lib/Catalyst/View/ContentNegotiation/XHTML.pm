@@ -8,7 +8,7 @@ use HTTP::Negotiate qw/choose/;
 use namespace::clean -except => 'meta';
 
 # Remember to bump $VERSION in View::TT::XHTML also.
-our $VERSION = '1.102';
+our $VERSION = '1.103';
 
 requires 'process';
 

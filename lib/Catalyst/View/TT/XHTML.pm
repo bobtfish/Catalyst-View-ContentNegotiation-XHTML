@@ -3,13 +3,11 @@ package Catalyst::View::TT::XHTML;
 use Moose;
 use namespace::clean -except => 'meta';
 
-BEGIN { # You can have chain endpoints in your view if you smoked enough crack..
-    extends qw/Catalyst::View::TT/;
-    with qw/Catalyst::View::ContentNegotiation::XHTML/;
-}
+extends qw/Catalyst::View::TT/;
+with qw/Catalyst::View::ContentNegotiation::XHTML/;
 
-our $VERSION = '1.102';
-   
+our $VERSION = '1.103';
+
 1;
 
 __END__

@@ -8,5 +8,6 @@ cover_db
 Makefile$
 Makefile.old$
 .shipit
+.git
 \B\.svn\b
 MANIFEST.SKIP
