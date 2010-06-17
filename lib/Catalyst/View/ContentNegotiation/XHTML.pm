@@ -31,7 +31,7 @@ after process => sub {
     if ( my $accept = $self->pragmatic_accept($c) and $c->response->headers->{'content-type'} =~ m|text/html|) {
         my $headers = $c->request->headers->clone;
         $headers->header('Accept' => $accept);
-        if ( choose($self->variants, $headers) eq 'xhtml') {
+        if ( (choose($self->variants, $headers)||'') eq 'xhtml') {
             $c->response->headers->{'content-type'} =~ s|text/html|application/xhtml+xml|;
         }
     }
