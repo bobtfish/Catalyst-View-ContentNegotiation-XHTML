@@ -61,10 +61,10 @@ header to application/xhtml+xml if the browser accepts it.
 
 =head1 SYNOPSIS
 
-    package Catalyst::View::TT;
+    package MyApp::View::TT;
 
     use Moose;
-    use namespace::clean -except => 'meta';
+    use namespace::autoclean;
 
     extends qw/Catalyst::View::TT/;
     with qw/Catalyst::View::ContentNegotiation::XHTML/;
